@@ -24,12 +24,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../models/tooltip_action_button.dart';
-import '../models/tooltip_action_config.dart';
+import '../../showcaseview.dart';
 import '../utils/constants.dart';
 import '../utils/enum.dart';
 import '../utils/overlay_manager.dart';
-import '../widget/floating_action_widget.dart';
 import 'showcase_controller.dart';
 import 'showcase_service.dart';
 
@@ -556,8 +554,8 @@ class ShowcaseView {
         listEquals(
           hideFloatingActionWidgetForShowcase,
           other.hideFloatingActionWidgetForShowcase,
-        );
-        && _onShowcaseChanged == other._onShowcaseChanged;
+        ) &&
+        _onShowcaseChanged == other._onShowcaseChanged;
   }
 
   @override

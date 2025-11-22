@@ -31,3 +31,4 @@ export 'src/showcase_widget.dart';
 export 'src/utils/enum.dart' hide ShowcaseProgressType, TooltipLayoutSlot;
 export 'src/widget/floating_action_widget.dart';
 export 'src/widget/tooltip_action_button_widget.dart';
+export 'src/models/showcase_changed_state.dart';

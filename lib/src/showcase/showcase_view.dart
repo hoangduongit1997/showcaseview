@@ -214,6 +214,10 @@ class ShowcaseView {
         <ShowcaseController>[];
   }
 
+  final _onShowcaseChanged = ValueNotifier<ShowcaseChangedState>(
+    const ShowcaseChangedState(index: 0, total: 0),
+  );
+
   /// Starts showcase with given widget ids after the optional delay.
   ///
   /// * [widgetIds] - List of GlobalKeys for widgets to showcase
@@ -364,6 +368,10 @@ class ShowcaseView {
     if (delay == Duration.zero) {
       _ids = widgetIds;
       _activeWidgetId = 0;
+      _onShowcaseChanged.value = ShowcaseChangedState(
+        total: widgetIds.length,
+        index: 0,
+      );
       _onStart();
       OverlayManager.instance.update(show: isShowcaseRunning, scope: scope);
     } else {
@@ -549,6 +557,7 @@ class ShowcaseView {
           hideFloatingActionWidgetForShowcase,
           other.hideFloatingActionWidgetForShowcase,
         );
+        && _onShowcaseChanged == other._onShowcaseChanged;
   }
 
   @override
@@ -573,6 +582,10 @@ class ShowcaseView {
       globalTooltipActions,
       globalFloatingActionWidget,
       hideFloatingActionWidgetForShowcase,
+      _onShowcaseChanged
     ]);
   }
+
+  ValueNotifier<ShowcaseChangedState> get onShowcaseChanged =>
+      _onShowcaseChanged;
 }

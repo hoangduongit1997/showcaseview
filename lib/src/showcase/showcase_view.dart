@@ -396,6 +396,12 @@ class ShowcaseView {
         // Update active widget ID before starting the next showcase
         _activeWidgetId = id;
 
+        // Update value onShowcaseChanged
+        _onShowcaseChanged.value = ShowcaseChangedState(
+          total: _ids?.length ?? 0,
+          index: id,
+        );
+
         if (_activeWidgetId! >= _ids!.length) {
           _cleanupAfterSteps();
           onFinish?.call();
@@ -580,7 +586,7 @@ class ShowcaseView {
       globalTooltipActions,
       globalFloatingActionWidget,
       hideFloatingActionWidgetForShowcase,
-      _onShowcaseChanged
+      _onShowcaseChanged,
     ]);
   }
 
